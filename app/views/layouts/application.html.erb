@@ -9,9 +9,28 @@
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
   </head>
 
   <body>
+
+    <h3>
+      <% if logged_in? %>
+        <%= link_to "Logout", logout_path, {method: "DELETE"} %>
+      <% else %>
+        <%= link_to "Login", new_session_path %>
+      <% end %>
+      <% if flash[:alert] %>
+      <div class="alert alert-danger text-center">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    </h3>
+
     <%= yield %>
   </body>
 </html>
