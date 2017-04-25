@@ -1,2 +1,18 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1 class="text-center"> <%= @post.title %> </h1>
+<div class="post container">
+  <h4>Created By: <%= link_to @post.user.name, user_path(@post.user) %> <span style="font-size: 14px; float: right;"> <%= time_ago_in_words(@post.created_at) %> ago... </span></h4>
+  <p class="text-center"><%= @post.body %></p>
+</div>
+
+  <%= @post.comments.each do |c| %>
+    <div class="comment container">
+      <h4><%= c.user.name %></h4>
+      <p><%= c.body %></p>
+    </div>
+  <% end %>
+
+<h3>Add Comment:</h3>
+  <%= form_for @comment do |f| %>
+    <%= f.text_area :body, placeholder: "Comment body..." %>
+    <%= f.submit %>
+  <% end %>
