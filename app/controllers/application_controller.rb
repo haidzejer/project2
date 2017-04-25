@@ -10,12 +10,17 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def current_user?(user)
+    user == current_user
+  end
+
   def authorize
     redirect_to new_session_path unless logged_in?
   end
 
-  def current_user?(user)
-    user == current_user
+  def authorize_by_user
+    redirect_to new_session_path unless logged_in? && current_user == User.find(params[:id])
   end
+
 
 end
