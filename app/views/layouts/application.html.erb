@@ -22,7 +22,11 @@
         <nav>
           <ul class="nav nav-pills pull-right">
             <li><a href="/">Home</a></li>
-            <li><a href="#">Users</a></li>
+            <li>
+              <% if !logged_in? %>
+                <%= link_to "Sign Up", new_user_path %>
+              <% end %>
+            </li>
             <li>
               <% if logged_in? %>
                 <%= link_to "Logout", logout_path, {method: "DELETE"} %>
@@ -33,12 +37,19 @@
           </ul>
         </nav>
         <h3 class="text-muted">Challenge App</h3>
+      </div>
+
         <% if flash[:alert] %>
         <div class="alert alert-danger text-center">
           <%= flash[:alert] %>
         </div>
         <% end %>
-      </div>
+
+        <% if flash[:success] %>
+        <div class="alert alert-success text-center">
+          <%= flash[:success] %>
+        </div>
+        <% end %>
 
     <%= yield %>
 

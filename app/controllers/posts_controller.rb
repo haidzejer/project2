@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @posts = Post.all
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -18,23 +18,32 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-      redirect_to root_path
+      flash[:success] = "Challenge Added! 👍"
+      redirect_to :back
     else
-      redirect_to new_post_path
+      flash[:alert] = "Unable To Add Challenge"
+      redirect_to :back
     end
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    @user = @post.user
+    @post.update(post_params)
+    flash[:success] = "Post Edited! 👍"
+    redirect_to @user
   end
 
   def destroy
     @post = Post.find(params[:id])
 
     if @post.destroy
-      redirect_to root_path
+      flash[:success] = "Challenge Deleted!"
+      redirect_to :back
     end
   end
 
