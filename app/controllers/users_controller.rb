@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authorize_by_user, only: [:show]
+  before_action :authorize_by_user, except: [:create, :new]
 
   def index
   end
@@ -24,9 +24,14 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    flash[:success] = "User Updated! 👍"
+    redirect_to @user
   end
 
   def destroy
