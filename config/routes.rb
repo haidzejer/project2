@@ -2,9 +2,12 @@ Rails.application.routes.draw do
 
   root 'posts#index'
   resources :sessions, only: [:new, :create]
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   resources :users
-  resources :comments
   delete '/logout' => 'sessions#destroy', as: :logout
+
+  post 'users/:id/new' => 'comments#create'
 
 end

@@ -7,9 +7,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
     <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
@@ -18,64 +15,12 @@
 
   <body>
     <div class="container">
-    <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li><a href="/">Home</a></li>
-            <li>
-              <% if !logged_in? %>
-                <%= link_to "Sign Up", new_user_path %>
-              <% end %>
-            </li>
-            <li>
-              <% if logged_in? %>
-                <%= link_to "Logout", logout_path, {method: "DELETE"} %>
-              <% else %>
-                <%= link_to "Login", new_session_path %>
-              <% end %>
-            </li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Challenge App</h3>
-      </div>
 
-        <% if flash[:alert] %>
-        <div class="alert alert-danger text-center">
-          <%= flash[:alert] %>
-        </div>
-        <% end %>
+      <%= render "partials/header" %>
 
-        <% if flash[:success] %>
-        <div class="alert alert-success text-center">
-          <%= flash[:success] %>
-        </div>
-        <% end %>
+      <%= yield %>
 
-    <%= yield %>
-
-
-    <footer class="footer">
-      <nav>
-        <ul class="nav nav-pills pull-right">
-          <li><a href="/">Home</a></li>
-          <li>
-            <% if !logged_in? %>
-              <%= link_to "Sign Up", new_user_path %>
-            <% end %>
-          </li>
-          <li>
-            <% if logged_in? %>
-              <%= link_to "Logout", logout_path, {method: "DELETE"} %>
-            <% else %>
-              <%= link_to "Login", new_session_path %>
-            <% end %>
-          </li>
-        </ul>
-      </nav>
-    </footer>
-
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <%= render "partials/footer" %>
 
     </div>
   </body>

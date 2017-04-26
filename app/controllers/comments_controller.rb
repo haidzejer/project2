@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
-
+  before_action :find_post
+  before_action :find_comment, only: [:destroy]
 
   def index
     @comments = Comment.all
@@ -14,10 +15,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @post = Post.find(params[:id])
-    @comment = Comment.new(comment_params)
+    @comment = @post.comments.new(comment_params)
     @comment.user = current_user
-    @comment.post = @post
     if @comment.save
       flash[:success] = "Comment Added! 👍"
       redirect_to :back
@@ -34,11 +33,25 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    @post = Post.find(params[:post_id])
+    if @comment.destroy
+      flash[:success] = "Comment Deleted! 👍"
+      redirect_to post_path(@post)
+    end
   end
 
   private
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def find_post
+    @post = Post.find(params[:post_id])
+  end
+
+  def find_comment
+    @comment = @post.comments.find(params[:id])
   end
 
 end

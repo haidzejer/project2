@@ -19,7 +19,7 @@
 <h3>New Challenge</h3>
 
 <%= form_for @post do |f| %>
-  <%= f.text_field :title, placeholder: "Title" %>
-  <%= f.text_area :body, placeholder: "Post body..." %>
+  <%= f.text_field :title, placeholder: "Title", required: true %>
+  <%= f.text_area :body, placeholder: "Post body...", required: true %>
   <%= f.submit %>
 <% end %>
