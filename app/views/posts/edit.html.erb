@@ -1,6 +1,6 @@
 <%= form_for @post do |f| %>
   <h3>Edit Post:</h3>
-  <%= f.text_field :title, placeholder: "Title" %>
-  <%= f.text_area :body, placeholder: "body" %>
+  <%= f.text_field :title, placeholder: "Title", class: "form-field" %>
+  <%= f.text_area :body, placeholder: "body", class: "form-field" %>
   <%= f.submit "Edit" %>
 <% end %>

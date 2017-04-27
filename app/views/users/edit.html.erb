@@ -1,7 +1,7 @@
 <h1>Edit Your Information</h1>
 
 <%= form_for @user do |f| %>
-  <%= f.text_field :name, placeholder: "Name" %>
-  <%= f.text_area :email, placeholder: "Email" %>
+  <%= f.text_field :name, placeholder: "Name", class: "form-field" %>
+  <%= f.text_area :email, placeholder: "Email", class: "form-field" %>
   <%= f.submit "Edit" %>
 <% end %>

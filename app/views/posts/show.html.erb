@@ -1,29 +1,40 @@
 <h1 class="text-center"> <%= @post.title %> </h1>
 <div class="container post">
-  <p><%= @post.body %></p>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6"><p><%= @post.body %></p></div>
+    <div class="col-sm-3"></div>
+  </div>
   <h4>Created By: <%= link_to @post.user.name, user_path(@post.user) %> <span style="font-size: 14px; float: right;"> <%= time_ago_in_words(@post.created_at) %> ago... </span></h4>
+  <% if logged_in? %>
+  <span class="heart" style="text-align: center;"><%= render partial: "partials/heartsButton", locals: { post: @post } %></span>
+  <% end %>
 </div>
 
-<h3>Comments:</h3>
+<h3 style="margin: 25px;">Comments:</h3>
 
+<% if @post.comments.length > 0 %>
   <% @post.comments.each do |c| %>
     <div class="comment container">
-      <h4><%= c.user.name %></h4>
+      <h4>By: <%= c.user.name %></h4>
       <p><%= c.body %></p>
       <% if logged_in? && current_user == c.user %>
       <%= link_to "Delete", [c.post, c] , method: :delete %>
       <% end %>
     </div>
   <% end %>
+  <% else %>
+  <h4 class="text-center">Be the first to add a comment! 😊</h4>
+<% end %>
 
 
 
   <% if logged_in? %>
-  <h3>Add Comment:</h3>
+  <h3 style="margin: 25px;">Add Comment:</h3>
     <%= form_for [@post, @comment] do |f| %>
-      <%= f.text_area :body, placeholder: "Comment body...", required: true %>
+      <%= f.text_area :body, placeholder: "Comment body...", required: true, class: "form-field"%>
       <%= f.submit %>
     <% end %>
   <% else %>
-    <%= link_to "Login", new_session_path %> to add a comment!
+    <div class="text-center"><%= link_to "Login", new_session_path %> to add a comment!</div>
   <% end %>
