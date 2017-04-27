@@ -53,8 +53,13 @@
    border: 1px solid black;
    border-radius: 10px;
    box-shadow: 5px 5px 5px;
+   min-width: 200px;
  }
 
  .post p, h3 {
    text-align: center;
+ }
+
+ .form-control {
+   background-color: white;
  }

@@ -5,19 +5,23 @@
     <h3><%= link_to p.title, post_path(p) %></h3>
     <h6 class="text-center">Created about <%= time_ago_in_words(p.created_at) %> ago... </h6>
     <p><%= p.body %></p>
+    <% if logged_in? && current_user == User.find(params[:id]) %>
     <span style="font-size: 14px;">
       <%= link_to "Delete", p, method: :delete %>
     </span>
     <span style="font-size: 14px;">
       <%= link_to 'Edit', edit_post_path(p) %>
     </span>
+    <% end %>
   </div>
 <% end %>
 
-<h3>New Challenge</h3>
+<% if logged_in? && current_user == User.find(params[:id]) %>
+  <h3>New Challenge</h3>
 
-<%= form_for @post do |f| %>
-  <%= f.text_field :title, placeholder: "Title", required: true %>
-  <%= f.text_area :body, placeholder: "Post body...", required: true %>
-  <%= f.submit %>
+  <%= form_for @post do |f| %>
+    <%= f.text_field :title, placeholder: "Title", required: true %>
+    <%= f.text_area :body, placeholder: "Post body...", required: true %>
+    <%= f.submit %>
+  <% end %>
 <% end %>

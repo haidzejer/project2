@@ -1,7 +1,7 @@
 <h1 class="text-center"> <%= @post.title %> </h1>
-<div class="post container">
+<div class="container post">
+  <p><%= @post.body %></p>
   <h4>Created By: <%= link_to @post.user.name, user_path(@post.user) %> <span style="font-size: 14px; float: right;"> <%= time_ago_in_words(@post.created_at) %> ago... </span></h4>
-  <p class="text-center"><%= @post.body %></p>
 </div>
 
 <h3>Comments:</h3>
