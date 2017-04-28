@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  match 'heart', to: 'hearts#heart', via: :post
-
-  match 'unheart', to: 'hearts#unheart', via: :delete
+  get '/star' => 'stars#star', as: :star
+  get '/star' => 'stars#unstar', as: :unstar
 
   root 'posts#index'
   resources :sessions, only: [:new, :create]

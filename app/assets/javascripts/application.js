@@ -22,3 +22,10 @@ jQuery(function(){
     $("#r_challenge").toggleClass("hidden");
   })
 });
+
+
+jQuery(function(){
+  $(".star").click(function () {
+    $( this ).toggleClass('clicked');
+  })
+});

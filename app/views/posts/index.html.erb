@@ -1,15 +1,15 @@
 <div class="text-center">
 
-  <h1>Challenges</h1>
+  <h1 style="margin: 20px;">Challenges</h1>
 
   <button id="random_challenge">Random challenge!</button>
-  <% i = 1 + rand(@posts.length) %>
+  <% i = 1 + rand(@posts.length - 1) %>
   <% post = @posts[i]%>
   <% if post != nil %>
-    <div id="r_challenge" class="post hidden">
-      <h3><%= post.title %></h3>
-      <p><%= post.body %></p>
-    </div>
+  <div id="r_challenge" class="post hidden">
+    <h3><%= post.title %></h3>
+    <p><%= post.body %></p>
+  </div>
   <% end %>
 
 </div>
@@ -27,9 +27,6 @@
           <p><%= truncate(p.body, :length => 60) %></p>
           <h4 style="text-align: center;">Created By: <%= link_to p.user.name, user_path(p.user) %></h4>
           <p> <%= time_ago_in_words(p.created_at) %> ago... </p>
-          <% if logged_in? %>
-          <span class="heart" style="text-align: center;"><%= render partial: "partials/heartsButton", locals: { post: p } %></span>
-          <% end %>
         </div>
         <% i += 1 %>
     <% else %>
@@ -38,9 +35,6 @@
         <p><%= truncate(p.body, :length => 60) %></p>
         <h4 style="text-align: center;">Created By: <%= link_to p.user.name, user_path(p.user) %> </h4>
         <p> <%= time_ago_in_words(p.created_at) %> ago... </p>
-        <% if logged_in? %>
-        <span class="heart" style="text-align: center;"><%= render partial: "partials/heartsButton", locals: { post: p } %></span>
-        <% end %>
       </div>
       <% i += 1 %>
     <% end %>
