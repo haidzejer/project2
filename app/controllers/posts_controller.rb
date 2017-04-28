@@ -4,6 +4,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    if params[:random] == 'true'
+      @random_post = @posts[rand(@posts.length - 1)]
+    end
   end
 
   def show

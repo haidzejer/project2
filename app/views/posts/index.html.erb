@@ -2,15 +2,14 @@
 
   <h1 style="margin: 20px;">Challenges</h1>
 
-  <button class="grow" id="random_challenge">Random challenge!</button>
-  <% i = 1 + rand(@posts.length - 1) %>
-  <% post = @posts[i]%>
-  <% if post != nil %>
-  <div id="r_challenge" class="post hidden">
-    <h3><%= post.title %></h3>
-    <p><%= post.body %></p>
+  <a href="/?random=true" class="button grow" id="random_challenge">Random challenge!</a>
+
+<% if @random_post %>
+  <div id="r_challenge" class="post">
+    <h3><%= @random_post.title %></h3>
+    <p><%= @random_post.body %></p>
   </div>
-  <% end %>
+<% end %>
 
 </div>
 
