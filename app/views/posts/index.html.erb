@@ -2,7 +2,7 @@
 
   <h1 style="margin: 20px;">Challenges</h1>
 
-  <button id="random_challenge">Random challenge!</button>
+  <button class="grow" id="random_challenge">Random challenge!</button>
   <% i = 1 + rand(@posts.length - 1) %>
   <% post = @posts[i]%>
   <% if post != nil %>
@@ -22,7 +22,7 @@
         </div>
       <% end %>
       <div class="row">
-        <div class="post col-sm-4">
+        <div class="post col-sm-4 grow">
           <h3><%= link_to p.title, post_path(p) %> </h3>
           <p><%= truncate(p.body, :length => 60) %></p>
           <h4 style="text-align: center; margin-bottom: 0;">Created By: <%= link_to p.user.name, user_path(p.user) %></h4>
@@ -31,7 +31,7 @@
         </div>
         <% i += 1 %>
     <% else %>
-      <div class="post col-sm-4">
+      <div class="post col-sm-4 grow">
         <h3><%= link_to p.title, post_path(p) %> </h3>
         <p><%= truncate(p.body, :length => 60) %></p>
         <h4 style="text-align: center; margin-bottom: 0;">Created By: <%= link_to p.user.name, user_path(p.user) %> </h4>
