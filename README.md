@@ -2,7 +2,7 @@
 
 ## The blog for web challenges
 
-A typical blogging app with users that can make and comment on posts.
+A typical blogging app with users that can make and comment on posts.  Originally intended to be used to post challenges for your friends to see and eventually regret attempting.
 
 ### Technologies Used
 ---
@@ -39,3 +39,8 @@ A typical blogging app with users that can make and comment on posts.
 
 ### Credits
 ---
+[Adding comments in Rails](https://www.youtube.com/watch?v=IUUThhcGtzc&feature=share)
+
+Grow image css from:  [thebrandsmen.com](http://www.thebrandsmen.com/css-image-hover-effects/)
+
+I was assisted by Phillippe Luchansky, Jimmy Garzon, and the students at General Assembly's Web Development Immersive Program in Santa Monica.
