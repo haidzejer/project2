@@ -11,15 +11,17 @@
  * It is generally better to create a new file per style scope.
  *
  */
+
+// RAILS_ENV=production bin/rails assets:precompile
+
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
  body {
    padding-top: 20px;
    padding-bottom: 20px;
-  //  background-color: #f2f2f2;
-  //  background: linear-gradient(315deg, rgba(155,77,202, .5), #f2f2f2);
-  background: red;
+   background-color: #f2f2f2;
+   background: linear-gradient(315deg, rgba(155,77,202, .5), #f2f2f2);
  }
 
  .header, .footer {
