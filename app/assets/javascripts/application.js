@@ -15,17 +15,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-
-jQuery(function(){
-  $("#random_challenge").click(function () {
-    $("#r_challenge").toggleClass("hidden");
-  })
-});
-
-
-jQuery(function(){
-  $(".star").click(function () {
-    $( this ).toggleClass('clicked');
-  })
-});

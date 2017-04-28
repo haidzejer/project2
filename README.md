@@ -13,6 +13,7 @@ A typical blogging app with users that can make and comment on posts.  Originall
 * JQuery
 * JavaScript
 * Bootstrap
+* Milligram
 * Atom
 * Heroku
 
