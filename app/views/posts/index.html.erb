@@ -25,16 +25,18 @@
         <div class="post col-sm-4">
           <h3><%= link_to p.title, post_path(p) %> </h3>
           <p><%= truncate(p.body, :length => 60) %></p>
-          <h4 style="text-align: center;">Created By: <%= link_to p.user.name, user_path(p.user) %></h4>
+          <h4 style="text-align: center; margin-bottom: 0;">Created By: <%= link_to p.user.name, user_path(p.user) %></h4>
           <p> <%= time_ago_in_words(p.created_at) %> ago... </p>
+          <p style="margin-bottom: 0;"><%= p.comments.length %> Comments</p>
         </div>
         <% i += 1 %>
     <% else %>
       <div class="post col-sm-4">
         <h3><%= link_to p.title, post_path(p) %> </h3>
         <p><%= truncate(p.body, :length => 60) %></p>
-        <h4 style="text-align: center;">Created By: <%= link_to p.user.name, user_path(p.user) %> </h4>
+        <h4 style="text-align: center; margin-bottom: 0;">Created By: <%= link_to p.user.name, user_path(p.user) %> </h4>
         <p> <%= time_ago_in_words(p.created_at) %> ago... </p>
+        <p style="margin-bottom: 0;"><%= p.comments.length %> Comments</p>
       </div>
       <% i += 1 %>
     <% end %>
